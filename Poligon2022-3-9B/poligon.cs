@@ -71,7 +71,24 @@ namespace Poligon2022_3_9B
             }
             return novi;
         }
-        public bool prost() { return false; }
+        public bool prost() 
+        {
+            for (int i = 0; i < broj_temena-1; i++)
+            {
+                for (int j = i+1; j < broj_temena; j++)
+                {
+                    if (tacka.jednake(teme[i], teme[j]) )
+                    {
+                        return false;  
+                    }
+                }
+            }
+            for (int i = 0; i < broj_temena; i++)
+            {
+
+            }
+            return false; 
+        }
         public double povrsina() { return 0; }
         public bool konveksan() { return false; }  
         public poligon omotac() { return null; }

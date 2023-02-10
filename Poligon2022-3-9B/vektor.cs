@@ -8,7 +8,7 @@ namespace Poligon2022_3_9B
 {
     internal class vektor
     {
-        public tacka a;
+        public tacka a, b;
         public vektor(tacka a, tacka b) 
         { 
             this.a = new tacka(a, b);

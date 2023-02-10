@@ -32,5 +32,10 @@ namespace Poligon2022_3_9B
             this.x = b.x - a.x;
             this.y = b.y - a.y;
         }
+        public static bool jednake(tacka a, tacka b)
+        {
+            if ((a.getX() == b.getX()) && (a.getY() == b.getY())) return true;
+            else return false;
+        }
     }
 }
