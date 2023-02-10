@@ -8,6 +8,7 @@ namespace Poligon2022_3_9B
 {
     internal class vektor
     {
+        // MORA POCETAK I KRAJ, INACE NE ZNAMO DA LI SE SEKU!!
         public tacka a, b;
         public vektor(tacka a, tacka b) 
         { 
