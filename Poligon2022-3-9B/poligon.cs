@@ -83,13 +83,34 @@ namespace Poligon2022_3_9B
                     }
                 }
             }
+            for (int i = 0; i < broj_temena-2; i++)
+            {
+                vektor prvi = new vektor(teme[i], teme[i + 1]);
+                for (int j = i+2; j < broj_temena; j++)
+                {
+                    if (i == 0 && (j == (broj_temena - 1))) continue;
+                    vektor drugi = new vektor(teme[j], teme[(j + 1)%broj_temena]);
+                    if (ravan.seku_se(prvi, drugi)) return false;
+                }
+            }
+            return true; 
+        }
+        public double povrsina() {
+            if (prost() == false)
+            {
+                Console.WriteLine("Poligon nije prost!");
+                return 0;
+            }
+            double plus = 0;
+            double minus = 0;
             for (int i = 0; i < broj_temena; i++)
             {
-
+                plus += teme[i].x * teme[(i + 1) % broj_temena].y;
+                minus += teme[(i + 1) % broj_temena].x * teme[i].y;
             }
-            return false; 
+            double povrsina = Math.Abs(plus - minus) / 2;
+            return povrsina;
         }
-        public double povrsina() { return 0; }
         public bool konveksan() { return false; }  
         public poligon omotac() { return null; }
     }

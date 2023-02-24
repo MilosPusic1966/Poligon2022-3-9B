@@ -12,7 +12,8 @@ namespace Poligon2022_3_9B
         public tacka a, b;
         public vektor(tacka a, tacka b) 
         { 
-            this.a = new tacka(a, b);
+            this.a = a;
+            this.b = b;
         }
         public vektor(tacka a)
         {

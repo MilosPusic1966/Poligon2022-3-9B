@@ -22,6 +22,7 @@ namespace Poligon2022_3_9B
                 Console.WriteLine("5: Prost");
                 Console.WriteLine("6: Povrsina");
                 Console.WriteLine("7: Konveksan");
+                Console.WriteLine("8: Proba");
                 Console.WriteLine("0: Kraj");
                 Console.WriteLine("Vas izbor je:");
                 izbor = Convert.ToInt32(Console.ReadLine());
@@ -42,8 +43,19 @@ namespace Poligon2022_3_9B
                         P1.stampa();
                         break;
                     case 5:
+                        Console.WriteLine("Prost={0}", P1.prost());
                         break;
                     case 6:
+                        Console.WriteLine("Povrsina={0}", P1.povrsina());
+                        break;
+                    case 8:
+                        tacka a = new tacka(1, 3);
+                        tacka b = new tacka(3, 0);
+                        tacka c = new tacka(1, 1);
+                        tacka d = new tacka(0, 0);
+                        vektor ab = new vektor(a, b);
+                        vektor cd = new vektor(c, d);
+                        Console.WriteLine("Presek = {0}", ravan.seku_se(ab, cd));
                         break;
                     default:
                         break;
