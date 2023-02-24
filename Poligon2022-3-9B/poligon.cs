@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,7 +25,7 @@ namespace Poligon2022_3_9B
         public static poligon unos()
         {
             Console.WriteLine("Unesite broj temena");
-            int n=Convert.ToInt32(Console.ReadLine());
+            int n = Convert.ToInt32(Console.ReadLine());
             poligon novi = new poligon(n);
             for (int i = 0; i < n; i++)
             {
@@ -43,7 +44,7 @@ namespace Poligon2022_3_9B
                 Console.WriteLine("Teme {0}=({1}, {2})", i, teme[i].x, teme[i].y);
             }
         }
-        public void snimi() 
+        public void snimi()
         {
             StreamWriter izlaz = new StreamWriter("poligon.txt");
             izlaz.WriteLine(broj_temena);
@@ -55,8 +56,8 @@ namespace Poligon2022_3_9B
             izlaz.Close();
             izlaz.Dispose();
         }
-        public void snimi(string putanja) 
-        { 
+        public void snimi(string putanja)
+        {
 
         }
         public static poligon ucitaj()
@@ -71,29 +72,29 @@ namespace Poligon2022_3_9B
             }
             return novi;
         }
-        public bool prost() 
+        public bool prost()
         {
-            for (int i = 0; i < broj_temena-1; i++)
+            for (int i = 0; i < broj_temena - 1; i++)
             {
-                for (int j = i+1; j < broj_temena; j++)
+                for (int j = i + 1; j < broj_temena; j++)
                 {
-                    if (tacka.jednake(teme[i], teme[j]) )
+                    if (tacka.jednake(teme[i], teme[j]))
                     {
-                        return false;  
+                        return false;
                     }
                 }
             }
-            for (int i = 0; i < broj_temena-2; i++)
+            for (int i = 0; i < broj_temena - 2; i++)
             {
                 vektor prvi = new vektor(teme[i], teme[i + 1]);
-                for (int j = i+2; j < broj_temena; j++)
+                for (int j = i + 2; j < broj_temena; j++)
                 {
                     if (i == 0 && (j == (broj_temena - 1))) continue;
-                    vektor drugi = new vektor(teme[j], teme[(j + 1)%broj_temena]);
+                    vektor drugi = new vektor(teme[j], teme[(j + 1) % broj_temena]);
                     if (ravan.seku_se(prvi, drugi)) return false;
                 }
             }
-            return true; 
+            return true;
         }
         public double povrsina() {
             if (prost() == false)
@@ -111,7 +112,18 @@ namespace Poligon2022_3_9B
             double povrsina = Math.Abs(plus - minus) / 2;
             return povrsina;
         }
-        public bool konveksan() { return false; }  
+        public bool konveksan() {
+            int T = 0;
+            for (int i = 0; i < broj_temena; i++)
+            {
+                vektor prvi = new vektor(teme[i], teme[(i + 1) % broj_temena]);
+                vektor drugi = new vektor(teme[(i + 1) % broj_temena], teme[(i + 2) % broj_temena]);
+                double proizv = ravan.VP(prvi, drugi);
+                if (proizv > 0) T++;
+            }
+            if (T == broj_temena || T == 0) return true;
+            return false; 
+        }  
         public poligon omotac() { return null; }
     }
 }

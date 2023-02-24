@@ -48,6 +48,9 @@ namespace Poligon2022_3_9B
                     case 6:
                         Console.WriteLine("Povrsina={0}", P1.povrsina());
                         break;
+                    case 7:
+
+                        break;
                     case 8:
                         tacka a = new tacka(1, 3);
                         tacka b = new tacka(3, 0);
