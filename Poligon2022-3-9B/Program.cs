@@ -22,7 +22,8 @@ namespace Poligon2022_3_9B
                 Console.WriteLine("5: Prost");
                 Console.WriteLine("6: Povrsina");
                 Console.WriteLine("7: Konveksan");
-                Console.WriteLine("8: Proba");
+                Console.WriteLine("8: Tacka unutra");
+                Console.WriteLine("9: Proba");
                 Console.WriteLine("0: Kraj");
                 Console.WriteLine("Vas izbor je:");
                 izbor = Convert.ToInt32(Console.ReadLine());
@@ -49,9 +50,16 @@ namespace Poligon2022_3_9B
                         Console.WriteLine("Povrsina={0}", P1.povrsina());
                         break;
                     case 7:
-
+                        Console.WriteLine("Konveksan={0}", P1.konveksan());
                         break;
                     case 8:
+                        Console.WriteLine("X koordinata tacke=");
+                        double x_T = Convert.ToDouble(Console.ReadLine());
+                        double y_T = Convert.ToDouble(Console.ReadLine());
+                        tacka T = new tacka(x_T, y_T);
+                        Console.WriteLine("Pripada={0}", P1.TuP(T));
+                        break;
+                    case 9:
                         tacka a = new tacka(1, 3);
                         tacka b = new tacka(3, 0);
                         tacka c = new tacka(1, 1);

@@ -35,5 +35,13 @@ namespace Poligon2022_3_9B
             if (SIS(x.a, x.b, y.a, y.b) * SIS(y.a, y.b, x.a, x.b) == 0) return false;
             else return true;
         }
+        public static bool pripada_spec(vektor TK, tacka A)
+        {
+            double dTA = Math.Abs(TK.a.x - A.x);
+            double dAK = Math.Abs(A.x - TK.b.x);
+            double dTK = Math.Abs(TK.a.x - TK.b.x);
+            if (A.y == TK.a.y && dTA+dAK == dTK) return true;
+            return false;
+        }
     }
 }

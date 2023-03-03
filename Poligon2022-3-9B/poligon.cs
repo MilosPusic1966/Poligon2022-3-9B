@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization.Configuration;
 
 namespace Poligon2022_3_9B
 {
@@ -124,6 +125,29 @@ namespace Poligon2022_3_9B
             if (T == broj_temena || T == 0) return true;
             return false; 
         }  
+        public bool TuP(tacka T)
+        {
+            double max_x = teme[0].x;
+            for (int i = 1; i < broj_temena; i++)
+            {
+                if (teme[i].x > max_x) max_x = teme[i].x;
+            }
+            tacka K = new tacka(max_x + 1, T.y);
+            vektor TK = new vektor(T, K);
+            int broj_preseka = 0;
+            for (int i = 0; i < broj_temena; i++)
+            {
+                vektor test = new vektor(teme[i], teme[(i + 1) % broj_temena]);
+                if (ravan.seku_se(TK, test)) broj_preseka++;
+                if (ravan.pripada_spec(TK, teme[(i+1) % broj_temena]))
+                {
+                    if (ravan.SIS(teme[i], teme[(i + 2) % broj_temena], T, K) == -1) broj_preseka++;
+                }
+                Console.WriteLine("presek={0}", broj_preseka);
+            }
+            if (broj_preseka % 2 == 0) return false;
+            return true;
+        }
         public poligon omotac() { return null; }
     }
 }
