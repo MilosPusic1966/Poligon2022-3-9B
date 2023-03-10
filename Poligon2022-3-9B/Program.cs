@@ -24,6 +24,7 @@ namespace Poligon2022_3_9B
                 Console.WriteLine("7: Konveksan");
                 Console.WriteLine("8: Tacka unutra");
                 Console.WriteLine("9: Proba");
+                Console.WriteLine("10: Omotac");
                 Console.WriteLine("0: Kraj");
                 Console.WriteLine("Vas izbor je:");
                 izbor = Convert.ToInt32(Console.ReadLine());
@@ -67,6 +68,9 @@ namespace Poligon2022_3_9B
                         vektor ab = new vektor(a, b);
                         vektor cd = new vektor(c, d);
                         Console.WriteLine("Presek = {0}", ravan.seku_se(ab, cd));
+                        break;
+                    case 10:
+                        P1.omotac();
                         break;
                     default:
                         break;
