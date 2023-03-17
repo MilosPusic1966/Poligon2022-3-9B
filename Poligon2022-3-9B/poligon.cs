@@ -72,6 +72,7 @@ namespace Poligon2022_3_9B
                 novi.teme[i].y = Convert.ToDouble(ulaz.ReadLine());
             }
             return novi;
+            ulaz.Close();
         }
         public bool prost()
         {
@@ -197,7 +198,7 @@ namespace Poligon2022_3_9B
                 min_ugao = 180;
                 int indeks3 = 0;
                 tacka poc = teme[indeks2];
-                for (int brojac = indeks2+1; brojac<indeks2+broj_temena ; brojac++)
+                for (int brojac = indeks2+1; brojac != indeks  ; brojac=((brojac+1) % broj_temena))
                 {
                     tacka kraj = teme[brojac % broj_temena];
                     double temp_x = kraj.x - poc.x;
@@ -219,6 +220,49 @@ namespace Poligon2022_3_9B
                 Console.WriteLine("teme {0}, {1}", hull[i].x, hull[i].y);
             }
             return null; 
+        }
+        public static int orientation(tacka p, tacka q, tacka r)
+        {
+            double val = (q.y - p.y) * (r.x - q.x) -
+                    (q.x - p.x) * (r.y - q.y);
+
+            if (val == 0) return 0; // collinear
+            return (val > 0) ? 1 : 2; // clock or counterclock wise
+        }
+        public void hull2()
+        {
+            tacka[] points;
+            points = new tacka[broj_temena];
+            int n = broj_temena;
+            for (int i = 0; i < broj_temena; i++)
+            {
+                points[i] = teme[i];
+            }
+            if (n < 3) return;
+            List<tacka> hull = new List<tacka>();
+            int l = 0;
+            for (int i = 1; i < n; i++)
+                if (points[i].x < points[l].x)
+                    l = i;
+            int p = l, q;
+            // a sada spektakl!
+            do
+            {
+                hull.Add(points[p]);
+                Console.WriteLine("Dodajem: {0}", p);
+                q = (p + 1) % n;
+                for (int i = 0; i < n; i++)
+                {
+                    if (orientation(points[p], points[i], points[q]) == 1)
+                        q = i;
+                }
+                p = q;
+            } while (p != l); // While we don't come to first 
+                              // point
+            foreach (tacka temp in hull)
+                Console.WriteLine("(" + temp.x + ", " +
+                                    temp.y + ")");
+        
         }
     }
 }

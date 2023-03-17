@@ -25,6 +25,7 @@ namespace Poligon2022_3_9B
                 Console.WriteLine("8: Tacka unutra");
                 Console.WriteLine("9: Proba");
                 Console.WriteLine("10: Omotac");
+                Console.WriteLine("11: Omotac 2");
                 Console.WriteLine("0: Kraj");
                 Console.WriteLine("Vas izbor je:");
                 izbor = Convert.ToInt32(Console.ReadLine());
@@ -71,6 +72,9 @@ namespace Poligon2022_3_9B
                         break;
                     case 10:
                         P1.omotac();
+                        break;
+                    case 11:
+                        P1.hull2();
                         break;
                     default:
                         break;
